@@ -1,0 +1,2 @@
+rootProject.name='MeaningfulErrorState'
+include ':app'
