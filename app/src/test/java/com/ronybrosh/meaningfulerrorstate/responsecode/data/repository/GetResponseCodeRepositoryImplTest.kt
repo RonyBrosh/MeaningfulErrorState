@@ -23,7 +23,11 @@ class GetResponseCodeRepositoryImplTest {
     fun `getResponseCode SHOULD return result state error with error state client error WHEN api fail with http exception AND 400 error code`() {
         val error = HttpException(Response.error<Unit>(400, mock()))
         val errorCode = "400"
-        val expected = ResultState.Error<Unit>(ErrorState.ClientError(400, error.localizedMessage ?: error.message()))
+        val expected = ResultState.Error<Unit>(
+            ErrorState.ClientError(
+                error.localizedMessage ?: error.message()
+            )
+        )
         whenever(responseCodeApi.getResponseCode(errorCode)).thenReturn(Completable.error(error))
 
         val result = sut.getResponseCode(errorCode).blockingGet()
@@ -35,7 +39,11 @@ class GetResponseCodeRepositoryImplTest {
     fun `getResponseCode SHOULD return result state error with error state server error WHEN api fail with http exception AND 500 error code`() {
         val error = HttpException(Response.error<Unit>(500, mock()))
         val errorCode = "500"
-        val expected = ResultState.Error<Unit>(ErrorState.ServerError(500, error.localizedMessage ?: error.message()))
+        val expected = ResultState.Error<Unit>(
+            ErrorState.ServerError(
+                error.localizedMessage ?: error.message()
+            )
+        )
         whenever(responseCodeApi.getResponseCode(errorCode)).thenReturn(Completable.error(error))
 
         val result = sut.getResponseCode(errorCode).blockingGet()
@@ -47,7 +55,7 @@ class GetResponseCodeRepositoryImplTest {
     fun `getResponseCode SHOULD return result state error with error state network error WHEN api fail with io exception`() {
         val error = IOException()
         val errorCode = "200"
-        val expected = ResultState.Error<Unit>(ErrorState.NetworkError(error.localizedMessage ?: error.message))
+        val expected = ResultState.Error<Unit>(ErrorState.NetworkError)
         whenever(responseCodeApi.getResponseCode(errorCode)).thenReturn(Completable.error(error))
 
         val result = sut.getResponseCode(errorCode).blockingGet()
@@ -59,7 +67,7 @@ class GetResponseCodeRepositoryImplTest {
     fun `getResponseCode SHOULD return result state error with error state unknown error WHEN api fail with just exception`() {
         val error = Exception()
         val errorCode = "200"
-        val expected = ResultState.Error<Unit>(ErrorState.UnknownError(error.localizedMessage ?: error.message))
+        val expected = ResultState.Error<Unit>(ErrorState.UnknownError)
         whenever(responseCodeApi.getResponseCode(errorCode)).thenReturn(Completable.error(error))
 
         val result = sut.getResponseCode(errorCode).blockingGet()

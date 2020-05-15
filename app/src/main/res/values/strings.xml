@@ -3,7 +3,14 @@
 
     <string name="get_response_code_action_bar_title">Meaningful Error State</string>
     <string name="get_response_code_action_button_label">Get Response Code</string>
-    <string name="get_response_code_network_error_toast">Maybe something wrong with your internet connection?</string>
-    <string name="get_response_code_success">Successful request!</string>
+    <string name="get_response_code_error_dialog_got_it_button">Got it!</string>
+    <string name="get_response_code_error_dialog_close_button">Close</string>
+    <string name="get_response_code_error_dialog_retry_button">Retry</string>
+    <string name="get_response_code_error_dialog_title_network">Network error!</string>
+    <string name="get_response_code_error_dialog_title_server">Server error!</string>
+    <string name="get_response_code_error_dialog_title_client">Client error!</string>
+    <string name="get_response_code_success_message">Successful request!</string>
+    <string name="get_response_code_unknown_error_message">Unknown error…</string>
+    <string name="get_response_code_network_error_message">Maybe there is no internet connection?</string>
 
 </resources>

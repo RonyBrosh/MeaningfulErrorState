@@ -17,7 +17,7 @@ class GetResponseCodeUseCaseTest {
 
     @Test
     fun `invoke SHOULD return result state error WHEN repository fail`() {
-        val error = ErrorState.NetworkError("Can't find host")
+        val error = ErrorState.NetworkError
         val errorCode = "invalidResponseCode"
         val expected = ResultState.Error<Unit>(error)
         whenever(responseCodeRepository.getResponseCode(errorCode)).thenReturn(Single.just(ResultState.Error(error)))
